@@ -4,7 +4,7 @@
 active=$(tmsh show sys failover | awk '/active/ {print $2}')
 if [ "$active" ] ; then
   # ssh allow list
-  sshAllow="172.20.5.0/24 172.19.5.0/24 134.187.212.0/24 134.186.253.0/24 134.187.253.0/24"
+  sshAllow="172.20.5.0/24 172.19.5.0/24 10.107.212.0/24 10.106.253.0/24 10.107.253.0/24"
   
   echo "Executing script to modify ssh allow-list against $(uname -n)"  
   

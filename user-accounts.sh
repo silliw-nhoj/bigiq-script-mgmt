@@ -5,7 +5,7 @@ active=$(tmsh show sys failover | awk '/active/ {print $2}')
 if [ "$active" ] ; then
 
   # admin users
-  adminUsers="brett vana john"
+  adminUsers="admin1 admin2 admin3"
   
   echo "Executing script to add users against $(uname -n)"
 

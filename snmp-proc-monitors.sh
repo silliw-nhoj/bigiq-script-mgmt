@@ -8,7 +8,7 @@ if [ "$active" ] ; then
   # process-monitors - process-name:max-processes
   procMons="bigd:1 chmand:1 httpd:infinity mcpd:1 sod:1 tmm:infinity"
   # traps - trap-name:destination-host:network
-  traps="SNMPhost1:134.186.253.14:mgmt SNMPhost2:134.186.253.16:mgmt SNMPhost3:156.60.156.68:mgmt"
+  traps="SNMPhost1:10.106.253.14:mgmt SNMPhost2:10.106.253.16:mgmt SNMPhost3:10.20.156.68:mgmt"
 
   echo "Executing script to modify snmp process-monitors against $(uname -n)"  
   

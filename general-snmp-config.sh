@@ -5,7 +5,7 @@ active=$(tmsh show sys failover | awk '/active/ {print $2}')
 if [ "$active" ] ; then
 
   # set snmp variables
-  allowedAddrs="134.186.253.14 134.186.253.16 156.60.156.68 134.186.253.69 134.186.253.2 134.186.253.18"
+  allowedAddrs="10.106.253.14 10.106.253.16 10.20.156.68 10.106.253.69 10.106.253.2 10.106.253.18"
   community="community1"
   comString="w5rLroXC1bxG"
 

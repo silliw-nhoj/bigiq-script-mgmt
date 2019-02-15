@@ -8,7 +8,7 @@ if [ "$active" ] ; then
   # disk-monitors - name:minspace:path
   dskMons="root:2000:/ var:10000:/var shared:10000:/shared"
   # traps - trap-name:destination-host:network
-  traps="SNMPhost1:134.186.253.14:mgmt SNMPhost2:134.186.253.16:mgmt SNMPhost3:156.60.156.68:mgmt"
+  traps="SNMPhost1:10.106.253.14:mgmt SNMPhost2:10.106.253.16:mgmt SNMPhost3:10.20.156.68:mgmt"
 
   echo "Executing script to modify snmp disk-monitors against $(uname -n)"  
   
