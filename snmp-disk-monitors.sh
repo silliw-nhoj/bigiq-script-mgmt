@@ -4,7 +4,7 @@
 active=$(tmsh show sys failover | awk '/active/ {print $2}')
 if [ "$active" ] ; then
   # set snmp community string
-  comString="w5rLroXC1bxG"
+  comString="teststring"
   # disk-monitors - name:minspace:path
   dskMons="root:2000:/ var:10000:/var shared:10000:/shared"
   # traps - trap-name:destination-host:network

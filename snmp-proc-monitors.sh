@@ -4,7 +4,7 @@
 active=$(tmsh show sys failover | awk '/active/ {print $2}')
 if [ "$active" ] ; then
   # set snmp community string
-  comString="w5rLroXC1bxG"
+  comString="teststring"
   # process-monitors - process-name:max-processes
   procMons="bigd:1 chmand:1 httpd:infinity mcpd:1 sod:1 tmm:infinity"
   # traps - trap-name:destination-host:network

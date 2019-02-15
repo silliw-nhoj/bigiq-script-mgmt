@@ -7,7 +7,7 @@ if [ "$active" ] ; then
   # set snmp variables
   allowedAddrs="10.106.253.14 10.106.253.16 10.20.156.68 10.106.253.69 10.106.253.2 10.106.253.18"
   community="community1"
-  comString="w5rLroXC1bxG"
+  comString="teststring"
 
   echo "Executing script to modify general snmp configuration against $(uname -n)"
     
