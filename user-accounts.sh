@@ -16,10 +16,6 @@ if [ "$active" ] ; then
     fi
   done
   
-  for u in $(echo $adminUsers); do
-    tmsh create auth user $u description $u partition-access replace-all-with { all-partitions { role admin } } shell bash
-  done
-  
   ver=$(tmsh list sys soft volume | awk '/^sys software/ {vol=$4;active=0} / active/ {active=1} / version / {ver=$2} /^}/ {if (active) print ver}')
   if [ "$ver" \> 12 ] ; then 
     for u in $(echo $adminUsers); do
