@@ -10,7 +10,7 @@ if [ "$active" ] ; then
   echo "Executing script to add users against $(uname -n)"
 
   echo "Pre-change list of admin users"
-  tmsh list auth user partition-access | awk '/^auth user/ {user=$3} / role / {role=$2} /^}/ {print user,role}' | while read user role; do
+  tmsh list auth user | awk '/^auth user/ {user=$3} / role / {role=$2} /^}/ {print user,role}' | while read user role; do
     if [ "$role" == "admin" ] ; then
       echo $user
     fi
@@ -20,8 +20,19 @@ if [ "$active" ] ; then
     tmsh create auth user $u description $u partition-access replace-all-with { all-partitions { role admin } } shell bash
   done
   
+  ver=$(tmsh list sys soft volume | awk '/^sys software/ {vol=$4;active=0} / active/ {active=1} / version / {ver=$2} /^}/ {if (active) print ver}')
+  if [ "$ver" \> 12 ] ; then 
+    for u in $(echo $adminUsers); do
+      tmsh create auth user $u description $u partition-access replace-all-with { all-partitions { role admin } } shell bash
+    done
+  else 
+    for u in $(echo $adminUsers); do
+      tmsh create auth user $u description $u partition-access all role admin shell bash
+    done
+  fi
+    
   echo "Post-change list of admin users"
-  tmsh list auth user partition-access | awk '/^auth user/ {user=$3} / role / {role=$2} /^}/ {print user,role}' | while read user role; do
+  tmsh list auth user | awk '/^auth user/ {user=$3} / role / {role=$2} /^}/ {print user,role}' | while read user role; do
     if [ "$role" == "admin" ] ; then
       echo $user
     fi
@@ -30,7 +41,7 @@ if [ "$active" ] ; then
   # save config
   tmsh save sys config
 
-  # sleep for 5 seconds to allow peer time to update
+  # sleep for 5 seconds to allow per time to update
   sleep 5
   
   # sync config
